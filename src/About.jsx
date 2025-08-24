@@ -177,11 +177,11 @@ export default function AboutSection() {
                 <span className="text-4xl mb-4 block">🎓</span>
                 <h4 className="font-bold text-xl mb-2 text-green-400">University of Waterloo</h4>
                 <p className="text-blue-200 text-lg mb-2">BSc Computer Science</p>
-                <p className="text-blue-400 text-lg mb-4 font-semibold">2021 - 2025</p>
+                <p className="text-blue-400 text-lg mb-4 font-semibold">2025 - Present </p>
                 <div className="space-y-2">
                   <div className="bg-slate-700 rounded-lg p-3">
                     <span className="text-gray-300">GPA: </span>
-                    <span className="text-white font-semibold">3.8/4.0</span>
+                    <span className="text-white font-semibold">3.7/4.0</span>
                   </div>
                 </div>
               </div>
@@ -193,11 +193,11 @@ export default function AboutSection() {
                 <span className="text-4xl mb-4 block">🏅</span>
                 <h4 className="font-bold text-xl mb-2 text-green-400">Summer Fields School</h4>
                 <p className="text-blue-200 text-lg mb-2">High School Diploma</p>
-                <p className="text-blue-400 text-lg mb-4 font-semibold">2018 - 2021</p>
+                <p className="text-blue-400 text-lg mb-4 font-semibold">2011 - 2024</p>
                 <div className="space-y-2">
                   <div className="bg-slate-700 rounded-lg p-3">
                     <span className="text-gray-300">Scholar: </span>
-                    <span className="text-white font-semibold">7 Years</span>
+                    <span className="text-white font-semibold">6 Consecutive Years</span>
                   </div>
                 </div>
               </div>
