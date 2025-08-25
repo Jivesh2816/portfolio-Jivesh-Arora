@@ -70,42 +70,27 @@ export default function AboutSection() {
       
     },
     { 
-      name: "Node.js", 
-      icon: "🟢", 
+      name: "Git", 
+      icon: "🌱", 
       color: "emerald",
       
     },
     { 
-      name: "Git", 
-      icon: "📚", 
+      name: "SQL", 
+      icon: "🗄️", 
       color: "red",
       
     },
     { 
-      name: "MongoDB", 
-      icon: "🍃", 
-      color: "teal",
-    },
-    { 
-      name: "Docker", 
-      icon: "🐳", 
-      color: "cyan",
-    },
-    { 
-      name: "Firebase", 
-      icon: "🔥", 
+      name: "Racket", 
+      icon: "🔷", 
       color: "amber",
     },
     { 
-      name: "Tailwind", 
+      name: "Tailwind CSS", 
       icon: "🎯", 
       color: "indigo",
     },
-    { 
-      name: "Figma", 
-      icon: "🎨", 
-      color: "purple",
-    }
   ];
 
   return (
@@ -197,13 +182,16 @@ export default function AboutSection() {
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-green-500/5 rounded-2xl"></div>
                       <div className="relative z-10">
                         <p className="text-gray-200 leading-relaxed text-lg mb-4">
-                          I'm a passionate Computer Science student at the University of Waterloo with a deep love for creating innovative solutions. 
-                          My journey in tech started with curiosity and has evolved into a commitment to building efficient, user-friendly applications. 
-                          I believe in the power of clean code, continuous learning, and collaborative problem-solving.
+                        I’m a Computer Science student at the University of Waterloo with a strong passion for problem-solving, mathematics, and technology. What began as curiosity for how things work has grown into a commitment to building efficient, user-friendly, and impactful applications.
                         </p>
                         <p className="text-gray-200 leading-relaxed text-lg">
-                          When I'm not coding, you'll find me mentoring fellow students, organizing tech events, or exploring new technologies. 
-                          I'm always excited to take on new challenges and contribute to meaningful projects that make a difference.
+                        Along the way, I’ve developed skills in Python, Java, JavaScript, HTML, CSS, SQL, and Racket, while exploring areas like full-stack development and data science. I believe in writing clean code, embracing continuous learning, and turning challenges into opportunities to grow.
+                        </p>
+                        <p className="text-gray-200 leading-relaxed text-lg">
+                        Beyond academics, I’ve taken on leadership and event coordination roles—mentoring peers, organizing cultural and tech events, and collaborating with diverse teams. These experiences have strengthened not only my technical expertise but also my communication, teamwork, and problem-solving abilities.
+                        </p>
+                        <p className="text-gray-200 leading-relaxed text-lg">
+                        Looking ahead, I’m eager to contribute to innovative projects, gain valuable experience through co-op, and continue developing as a well-rounded software developer.
                         </p>
                       </div>
                     </div>
@@ -593,7 +581,7 @@ export default function AboutSection() {
                   <div className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl p-4 border border-orange-500/30 hover:border-orange-400 hover:scale-105 transition-all duration-300 cursor-pointer">
                     <div className="text-center">
                       <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">💻</span>
-                      <span className="text-sm font-medium text-white group-hover:text-orange-300 transition-colors duration-300">Cooking</span>
+                      <span className="text-sm font-medium text-white group-hover:text-orange-300 transition-colors duration-300">Coding</span>
                     </div>
                   </div>
                 </div>
