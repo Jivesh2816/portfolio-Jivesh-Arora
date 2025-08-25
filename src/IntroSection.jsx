@@ -5,9 +5,9 @@ export default function IntroSection() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   
   const titles = [
-    "CS Student",
-    "Entrepreneur", 
-    "Problem Solver",
+    "Computer Science Student",
+    "Data Science Enthusiast", 
+    "Driven by Curiosity",
     "Tech Enthusiast",
     "Aspiring Software Developer"
   ];
@@ -46,7 +46,7 @@ export default function IntroSection() {
         </h2>
         
         <p className="text-xl mb-10">
-          Passionate about building efficient solutions and learning new technologies to grow as a developer.
+        Computer Science student at the University of Waterloo with a passion for developing efficient solutions and leveraging new technologies
         </p>
         
         <div className="flex">

@@ -90,3 +90,38 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Simple hover animations */
+.group:hover .group-hover\:translate-y-0 {
+  transform: translateY(0) !important;
+}
+
+/* Ensure cards are independent */
+#grca-card.group:hover .group-hover\:max-h-48 {
+  max-height: 12rem !important;
+}
+
+#stats-card.group:hover .group-hover\:max-h-48 {
+  max-height: 12rem !important;
+}
+
+#mehfil-card.group:hover .group-hover\:max-h-48 {
+  max-height: 12rem !important;
+}
+
+#wusa-card.group:hover .group-hover\:max-h-48 {
+  max-height: 12rem !important;
+}
+
+#cheshire-card.group:hover .group-hover\:max-h-48 {
+  max-height: 12rem !important;
+}
+
+#mathsoc-card.group:hover .group-hover\:max-h-48 {
+  max-height: 12rem !important;
+}
+
+/* Prevent grid interference */
+.grid > * {
+  isolation: isolate;
+}

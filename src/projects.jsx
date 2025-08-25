@@ -62,11 +62,15 @@ export default function ProjectsSection() {
                     
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-4">
-                      <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
+                      <button 
+                      onClick={() => window.open("https://jivesharora.netlify.app" ,'_blank')}
+                       className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
                         <span>🌐</span>
                         View Live Demo
                       </button>
-                      <button className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
+                      <button
+                      onClick={() => window.open("https://github.com/Jivesh2816/portfolio-Jivesh-Arora.git" ,'_blank')}
+                       className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
                         <span>📁</span>
                         Source Code
                       </button>
