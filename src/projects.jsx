@@ -9,8 +9,26 @@ export default function ProjectsSection() {
       description: "A modern, responsive portfolio website built with React and Tailwind CSS. Features a clean design with smooth animations, interactive components, and a comprehensive showcase of my skills, education, and leadership experience.",
       technologies: ["React", "Tailwind CSS", "JavaScript", "Vite"],
       image: "🎨",
-      demoLink: "#", // Placeholder - will be updated when deployed
-      sourceLink: "#" // Placeholder - will be updated when deployed
+      demoLink: "https://jivesharora.netlify.app",
+      sourceLink: "https://github.com/Jivesh2816/portfolio-Jivesh-Arora.git"
+    },
+    {
+      id: 2,
+      title: "Lost and Found App",
+      description: "A comprehensive lost and found application that helps users report and find lost items. Features user authentication, item categorization, location-based search, and a responsive interface for easy access across devices.",
+      technologies: ["React", "Node.js", "MongoDB", "Express", "JavaScript"],
+      image: "🔍",
+      demoLink: "https://lost-and-found-app-seven.vercel.app/",
+      sourceLink: "https://github.com/Jivesh2816/Lost-and-found-app"
+    },
+    {
+      id: 3,
+      title: "OCC Chatbot",
+      description: "An intelligent chatbot application designed for OCC (Office of Career and Co-op) services. Provides automated responses to common queries, helps students with career guidance, and streamlines communication processes.",
+      technologies: ["React", "JavaScript", "AI/ML", "Web APIs"],
+      image: "🤖",
+      demoLink: "https://occ-chatbot-36q6.vercel.app/",
+      sourceLink: "https://github.com/Jivesh2816/OCC-CHATBOT"
     }
   ];
 
@@ -28,7 +46,7 @@ export default function ProjectsSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-5xl mx-auto">
           {projects.map((project) => (
             <div 
               key={project.id}
@@ -63,14 +81,14 @@ export default function ProjectsSection() {
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-4">
                       <button 
-                      onClick={() => window.open("https://jivesharora.netlify.app" ,'_blank')}
-                       className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
+                        onClick={() => window.open(project.demoLink, '_blank')}
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
                         <span>🌐</span>
                         View Live Demo
                       </button>
                       <button
-                      onClick={() => window.open("https://github.com/Jivesh2816/portfolio-Jivesh-Arora.git" ,'_blank')}
-                       className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
+                        onClick={() => window.open(project.sourceLink, '_blank')}
+                        className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
                         <span>📁</span>
                         Source Code
                       </button>
@@ -87,7 +105,7 @@ export default function ProjectsSection() {
           <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 max-w-2xl mx-auto">
             <h3 className="text-xl font-semibold text-blue-400 mb-2">More Projects Coming Soon!</h3>
             <p className="text-slate-400">
-              I'm actively working on new projects to expand my portfolio. Check back soon for updates!
+              I'm actively working on new projects including full-stack applications, mobile apps, and AI/ML projects. Check back soon for updates!
             </p>
           </div>
         </div>

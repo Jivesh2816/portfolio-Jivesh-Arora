@@ -175,7 +175,7 @@ export default function AboutSection() {
                         <span className="text-white text-lg">✨</span>
                       </div>
                       <h4 className="text-xl font-bold text-white">My Journey</h4>
-                    </div>
+            </div>
                     
                     {/* Story content with gradient border */}
                     <div className="relative p-6 rounded-2xl bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-slate-600/50">
@@ -453,9 +453,9 @@ export default function AboutSection() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+          </div>
+        </div>
+
             {/* Volunteer Cashier - MathSoc */}
             <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="mathsoc-card">
               {ribbon('Volunteer')}
@@ -576,22 +576,22 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                {/* Coding */}
+                {/* Studying Maths */}
                 <div className="group relative">
-                  <div className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl p-4 border border-orange-500/30 hover:border-orange-400 hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl p-4 border border-emerald-500/30 hover:border-emerald-400 hover:scale-105 transition-all duration-300 cursor-pointer">
                     <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">💻</span>
-                      <span className="text-sm font-medium text-white group-hover:text-orange-300 transition-colors duration-300">Coding</span>
+                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">📚</span>
+                      <span className="text-sm font-medium text-white group-hover:text-emerald-300 transition-colors duration-300">Studying Maths</span>
                     </div>
                   </div>
                 </div>
 
-                 {/* Mathematics */}
-                 <div className="group relative">
-                  <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-2xl p-4 border border-orange-500/30 hover:border-orange-400 hover:scale-105 transition-all duration-300 cursor-pointer">
+                {/* Coding */}
+                <div className="group relative">
+                  <div className="bg-gradient-to-br from-violet-500/20 to-violet-600/20 rounded-2xl p-4 border border-violet-500/30 hover:border-violet-400 hover:scale-105 transition-all duration-300 cursor-pointer">
                     <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">🔢</span>
-                      <span className="text-sm font-medium text-white group-hover:text-orange-300 transition-colors duration-300">Mathematics</span>
+                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">💻</span>
+                      <span className="text-sm font-medium text-white group-hover:text-violet-300 transition-colors duration-300">Coding</span>
                     </div>
                   </div>
                 </div>
