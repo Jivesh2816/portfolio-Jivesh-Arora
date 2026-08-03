@@ -1,6 +1,16 @@
 import React from 'react';
 
-const iconClass = 'mb-2 text-xl text-green-400';
+const INTERESTS = [
+  { label: 'Gym', icon: '💪', big: true, bg: 'linear-gradient(135deg,rgba(239,68,68,.22),rgba(249,115,22,.12))', border: 'rgba(239,68,68,.3)' },
+  { label: 'Coding', icon: '💻', bg: 'rgba(59,130,246,.14)', border: 'rgba(59,130,246,.3)' },
+  { label: 'Badminton', icon: '🏸', bg: 'rgba(20,184,166,.14)', border: 'rgba(20,184,166,.3)' },
+  { label: 'Swimming', icon: '🏊', bg: 'rgba(6,182,212,.14)', border: 'rgba(6,182,212,.3)' },
+  { label: 'Cricket', icon: '🏏', bg: 'rgba(34,197,94,.14)', border: 'rgba(34,197,94,.3)' },
+  { label: 'Volunteering', icon: '🤝', bg: 'rgba(168,85,247,.14)', border: 'rgba(168,85,247,.3)' },
+  { label: 'Traveling', icon: '✈️', bg: 'rgba(234,179,8,.14)', border: 'rgba(234,179,8,.3)' },
+  { label: 'Cooking', icon: '👨‍🍳', bg: 'rgba(217,119,6,.14)', border: 'rgba(217,119,6,.3)' },
+  { label: 'Studying Maths', icon: '📚', bg: 'rgba(139,157,255,.14)', border: 'rgba(139,157,255,.3)' },
+];
 
 const ribbon = (text) => (
   <div className="w-full flex items-center justify-center mb-2">
@@ -8,91 +18,7 @@ const ribbon = (text) => (
   </div>
 );
 
-const SkillBox = ({ name, icon, color, details }) => (
-  <div className="relative w-full group cursor-pointer">
-    <div className="bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 rounded-lg p-4 transition-all duration-500 group-hover:scale-105 group-hover:border-blue-400 group-hover:shadow-xl">
-      {/* Main Content */}
-      <div className="flex flex-col items-center justify-center h-32">
-        <div className="text-3xl mb-2 transition-transform duration-300 group-hover:scale-110">
-          {icon}
-        </div>
-        <span className="text-sm font-semibold text-white transition-colors duration-300 group-hover:text-blue-300">
-          {name}
-        </span>
-      </div>
-      
-      {/* Details Section */}
-      <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-32">
-        <div className="pt-3 border-t border-slate-600">
-          <div className="text-xs text-gray-300 space-y-1">
-            {details && details.map((detail, index) => (
-              <div key={index} className="flex items-start gap-1">
-                <span className="text-blue-400 mt-0.5">•</span>
-                <span>{detail}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 export default function AboutSection() {
-  const skills = [
-    { 
-      name: "JavaScript", 
-      icon: "⚡", 
-      color: "yellow",
-      
-    },
-    { 
-      name: "React", 
-      icon: "⚛️", 
-      color: "blue",
-      
-    },
-    { 
-      name: "Python", 
-      icon: "🐍", 
-      color: "green",
-    },
-    { 
-      name: "Java", 
-      icon: "☕", 
-      color: "orange",
-      
-    },
-    { 
-      name: "HTML/CSS", 
-      icon: "🎨", 
-      color: "pink",
-      
-    },
-    { 
-      name: "Git", 
-      icon: "🌱", 
-      color: "emerald",
-      
-    },
-    { 
-      name: "SQL", 
-      icon: "🗄️", 
-      color: "red",
-      
-    },
-    { 
-      name: "Racket", 
-      icon: "🔷", 
-      color: "amber",
-    },
-    { 
-      name: "Tailwind CSS", 
-      icon: "🎯", 
-      color: "indigo",
-    },
-  ];
-
   return (
     <section id="about" className="py-16 bg-slate-800 overflow-x-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -115,41 +41,16 @@ export default function AboutSection() {
               
               <div className="p-8 md:p-12">
                 {/* Profile Header */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 mb-10">
-                  {/* Profile Image Container */}
-                  <div className="relative group">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-green-500/20 p-1">
-                      <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center border-2 border-slate-600 group-hover:border-blue-400 transition-all duration-300 overflow-hidden">
-                        <img 
-                          src="/profile-photo.jpg" 
-                          alt="Jivesh Arora" 
-                          className="w-full h-full object-cover rounded-full"
-                          onError={(e) => {
-                            console.log('Image failed to load, showing initials');
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
-                          }}
-                        />
-                        <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center" style={{display: 'none'}}>
-                          <span className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">JA</span>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Floating elements around profile */}
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full animate-bounce"></div>
-                    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-                    <div className="absolute top-1/2 -left-3 w-3 h-3 bg-purple-500 rounded-full animate-ping"></div>
-                  </div>
-                  
+                <div className="flex flex-col items-center mb-10">
                   {/* Profile Info */}
-                  <div className="text-center lg:text-left flex-1">
+                  <div className="text-center">
                     <h3 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                       Jivesh Arora
                     </h3>
                     <p className="text-xl text-blue-300 mb-4 font-medium">CS Student & Aspiring Developer</p>
-                    
+
                     {/* Status badges */}
-                    <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                    <div className="flex flex-wrap gap-3 justify-center">
                       <div className="flex items-center gap-2 bg-slate-800/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-600">
                         <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                         <span className="text-green-400 text-sm font-medium">📍 Canada</span>
@@ -166,59 +67,46 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                {/* Story Section */}
+                {/* Story Section - Two Column with Trait Cards */}
                 <div className="mb-10">
                   <div className="relative">
                     {/* Section header with icon */}
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white text-lg">✨</span>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#22d3ee,#34d399)' }}>
+                        <span className="text-lg">✨</span>
                       </div>
                       <h4 className="text-xl font-bold text-white">My Journey</h4>
-            </div>
-                    
-                    {/* Story content with gradient border */}
-                    <div className="relative p-6 rounded-2xl bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-slate-600/50">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-green-500/5 rounded-2xl"></div>
-                      <div className="relative z-10">
-                        <p className="text-gray-200 leading-relaxed text-lg mb-4">
-                        I’m a Computer Science student at the University of Waterloo with a strong passion for problem-solving, mathematics, and technology. What began as curiosity for how things work has grown into a commitment to building efficient, user-friendly, and impactful applications.
+                    </div>
+
+                    {/* Two-column split: story text + trait cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-8 items-start">
+                      <div>
+                        <p className="text-[14.5px] leading-[1.75] mb-3.5" style={{ color: '#b6c2d9' }}>
+                          I'm a Computer Science student at the University of Waterloo, driven by problem-solving, mathematics, and a habit of turning curiosity into working software.
                         </p>
-                        <p className="text-gray-200 leading-relaxed text-lg">
-                        Along the way, I’ve developed skills in Python, Java, JavaScript, HTML, CSS, SQL, and Racket, while exploring areas like full-stack development and data science. I believe in writing clean code, embracing continuous learning, and turning challenges into opportunities to grow.
+                        <p className="text-[14.5px] leading-[1.75]" style={{ color: '#b6c2d9' }}>
+                          I care about clean code and continuous learning — and I'm looking for a co-op where I can put that to work on real problems.
                         </p>
-                        <p className="text-gray-200 leading-relaxed text-lg">
-                        Beyond academics, I’ve taken on leadership and event coordination roles—mentoring peers, organizing cultural and tech events, and collaborating with diverse teams. These experiences have strengthened not only my technical expertise but also my communication, teamwork, and problem-solving abilities.
-                        </p>
-                        <p className="text-gray-200 leading-relaxed text-lg">
-                        Looking ahead, I’m eager to contribute to innovative projects, gain valuable experience through co-op, and continue developing as a well-rounded software developer.
-                        </p>
+                      </div>
+
+                      <div className="flex flex-col gap-3.5">
+                        <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
+                          <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Focus</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Full-stack development &amp; data science</div>
+                        </div>
+                        <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
+                          <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Beyond Code</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Mentoring peers, organizing tech &amp; cultural events</div>
+                        </div>
+                        <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
+                          <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Right Now</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Open to co-op &amp; internship opportunities</div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Skills Section */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white text-lg">🛠️</span>
-                    </div>
-                    <h4 className="text-xl font-bold text-white">Technical Skills & Technologies</h4>
-                  </div>
-                  
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {skills.map((skill, index) => (
-                  <SkillBox 
-                    key={index}
-                    name={skill.name}
-                    icon={skill.icon}
-                    color={skill.color}
-                    details={skill.details}
-                  />
-                ))}
-              </div>
-                </div>
               </div>
             </div>
           </div>
@@ -262,340 +150,33 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Leadership & Activities */}
-        <div>
-          <h3 className="text-2xl font-bold mb-8 text-center text-blue-400">Leadership & Activities</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {/* GRCA */}
-            <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="grca-card">
-              {ribbon('Vice President')}
-              <div className="text-center">
-                <span className="text-3xl mb-3 block transition-transform duration-300 group-hover:scale-110">🏛️</span>
-                <h4 className="font-bold text-lg mb-2 text-green-400">Government Risk Compliance Association (GRCA)</h4>
-                <p className="text-blue-200 text-sm mb-2">Vice President of Events | April 2025 - Present</p>
-                <p className="text-white text-sm mb-2">Waterloo, Canada</p>
-              </div>
-              
-              {/* Details Section */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-48">
-                <div className="pt-4 border-t border-slate-600">
-                  <div className="text-center mb-3">
-                    <h4 className="font-bold text-lg mb-3 text-blue-400">Key Responsibilities</h4>
-                  </div>
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Leading event planning for newly established club</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Building club's event structure and logistics</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Supporting long-term growth strategies</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Developing templates and frameworks</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Stats Club */}
-            <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="stats-card">
-              {ribbon('Events Lead')}
-              <div className="text-center">
-                <span className="text-3xl mb-3 block transition-transform duration-300 group-hover:scale-110">📊</span>
-                <h4 className="font-bold text-lg mb-2 text-green-400">Stats Club, UW</h4>
-                <p className="text-blue-200 text-sm mb-2">Events Lead | April 2025 - Present</p>
-                <p className="text-white text-sm mb-2">Waterloo, Canada</p>
-              </div>
-              
-              {/* Details Section */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-48">
-                <div className="pt-4 border-t border-slate-600">
-                  <div className="text-center mb-3">
-                    <h4 className="font-bold text-lg mb-3 text-blue-400">Key Responsibilities</h4>
-                  </div>
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Lead event planning and guest speaker coordination</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Oversee logistics, marketing, and volunteer teams</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Develop budgets, timelines, and resource plans</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Conduct post-event reviews and improvements</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* UW Mehfil */}
-            <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="mehfil-card">
-              {ribbon('Events Lead')}
-              <div className="text-center">
-                <span className="text-3xl mb-3 block transition-transform duration-300 group-hover:scale-110">🎭</span>
-                <h4 className="font-bold text-lg mb-2 text-green-400">UW Mehfil</h4>
-                <p className="text-blue-200 text-sm mb-2">Events Lead</p>
-                <p className="text-white text-sm">Waterloo, Canada</p>
-              </div>
-              
-              {/* Details Section */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-48">
-                <div className="pt-4 border-t border-slate-600">
-                  <div className="text-center mb-3">
-                    <h4 className="font-bold text-lg mb-3 text-blue-400">Key Responsibilities</h4>
-                  </div>
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Organize cultural and entertainment events</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Coordinate with performers and venues</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Manage event logistics and promotion</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Ensure successful event execution</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* WUSA Off Campus Don */}
-            <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="wusa-card">
-              {ribbon('Off Campus Don')}
-              <div className="text-center">
-                <span className="text-3xl mb-3 block transition-transform duration-300 group-hover:scale-110">🏠</span>
-                <h4 className="font-bold text-lg mb-2 text-green-400">WUSA</h4>
-                <p className="text-blue-200 text-sm mb-2">Off Campus Don</p>
-                <p className="text-white text-sm">Waterloo, Canada</p>
-              </div>
-              
-              {/* Details Section */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-48">
-                <div className="pt-4 border-t border-slate-600">
-                  <div className="text-center mb-3">
-                    <h4 className="font-bold text-lg mb-3 text-blue-400">Key Responsibilities</h4>
-                  </div>
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Support off-campus student community</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Provide guidance and resources</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Organize community events</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Foster student engagement</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Volunteer Cashier - Cheshire */}
-            <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="cheshire-card">
-              {ribbon('Volunteer')}
-              <div className="text-center">
-                <span className="text-3xl mb-3 block transition-transform duration-300 group-hover:scale-110">🛒</span>
-                <h4 className="font-bold text-lg mb-2 text-green-400">Novelities & Ridgidware Store</h4>
-                <p className="text-blue-200 text-sm mb-2">Volunteer Cashier</p>
-                <p className="text-white text-sm">Waterloo, Canada</p>
-              </div>
-              
-              {/* Details Section */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-48">
-                <div className="pt-4 border-t border-slate-600">
-                  <div className="text-center mb-3">
-                    <h4 className="font-bold text-lg mb-3 text-blue-400">Key Responsibilities</h4>
-                  </div>
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Process customer transactions</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Provide excellent customer service</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Maintain organized store environment</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Support store operations</span>
-                    </div>
-                  </div>
-                </div>
-          </div>
-        </div>
-
-            {/* Volunteer Cashier - MathSoc */}
-            <div className="rounded-xl shadow-lg p-6 bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500 hover:shadow-2xl hover:scale-105 hover:border-blue-400 transition-all duration-500 ease-in-out group" id="mathsoc-card">
-              {ribbon('Volunteer')}
-              <div className="text-center">
-                <span className="text-3xl mb-3 block transition-transform duration-300 group-hover:scale-110">🧮</span>
-                <h4 className="font-bold text-lg mb-2 text-green-400">MathSoc Office</h4>
-                <p className="text-blue-200 text-sm mb-2">Volunteer Cashier</p>
-                <p className="text-white text-sm">Waterloo, Canada</p>
-              </div>
-              
-              {/* Details Section */}
-              <div className="max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-48">
-                <div className="pt-4 border-t border-slate-600">
-                  <div className="text-center mb-3">
-                    <h4 className="font-bold text-lg mb-3 text-blue-400">Key Responsibilities</h4>
-                  </div>
-                  <div className="text-sm text-gray-300 space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Handle MathSoc office transactions</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Assist with student inquiries</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Support office administration</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-blue-400 mt-1">•</span>
-                      <span>Contribute to student community</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Interests Section - New Design */}
+        {/* Interests Section - Bento Grid */}
         <div className="mt-16">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-blue-400 mb-3">Interests & Hobbies</h3>
-            <div className="w-16 h-1 bg-green-400 mx-auto rounded-full"></div>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-[#8b9dff] to-[#67e8f9] bg-clip-text text-transparent">
+              Interests &amp; Hobbies
+            </h3>
+            <div className="w-14 h-[3px] rounded-full bg-green-500 mx-auto"></div>
           </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-3xl border border-slate-700/50 p-8">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {/* Gym */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-2xl p-4 border border-red-500/30 hover:border-red-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">💪</span>
-                      <span className="text-sm font-medium text-white group-hover:text-red-300 transition-colors duration-300">Gym</span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Badminton */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-2xl p-4 border border-blue-500/30 hover:border-blue-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">🏸</span>
-                      <span className="text-sm font-medium text-white group-hover:text-blue-300 transition-colors duration-300">Badminton</span>
-                    </div>
-                  </div>
+          <div className="max-w-3xl mx-auto bg-gradient-to-br from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-3xl border border-slate-700/50 p-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[90px] gap-3">
+              {INTERESTS.map(({ label, icon, big, bg, border }) => (
+                <div
+                  key={label}
+                  className={`group flex flex-col items-center justify-center gap-1.5 rounded-2xl border cursor-pointer transition-transform duration-300 hover:scale-105 ${
+                    big ? 'col-span-2 row-span-2' : ''
+                  }`}
+                  style={{ background: bg, borderColor: border }}
+                >
+                  <span className={`${big ? 'text-3xl' : 'text-xl'} block transition-transform duration-300 group-hover:scale-110`}>
+                    {icon}
+                  </span>
+                  <span className={`${big ? 'text-[15px]' : 'text-[13px]'} font-semibold text-slate-100 text-center px-1`}>
+                    {label}
+                  </span>
                 </div>
-
-                {/* Swimming */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl p-4 border border-cyan-500/30 hover:border-cyan-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">🏊‍♂️</span>
-                      <span className="text-sm font-medium text-white group-hover:text-cyan-300 transition-colors duration-300">Swimming</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Cricket */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl p-4 border border-green-500/30 hover:border-green-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">🏏</span>
-                      <span className="text-sm font-medium text-white group-hover:text-green-300 transition-colors duration-300">Cricket</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Volunteering */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-2xl p-4 border border-purple-500/30 hover:border-purple-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">🤝</span>
-                      <span className="text-sm font-medium text-white group-hover:text-purple-300 transition-colors duration-300">Volunteering</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Traveling */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-2xl p-4 border border-yellow-500/30 hover:border-yellow-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">✈️</span>
-                      <span className="text-sm font-medium text-white group-hover:text-yellow-300 transition-colors duration-300">Traveling</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Cooking */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-2xl p-4 border border-orange-500/30 hover:border-orange-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">👨‍🍳</span>
-                      <span className="text-sm font-medium text-white group-hover:text-orange-300 transition-colors duration-300">Cooking</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Studying Maths */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-2xl p-4 border border-emerald-500/30 hover:border-emerald-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">📚</span>
-                      <span className="text-sm font-medium text-white group-hover:text-emerald-300 transition-colors duration-300">Studying Maths</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Coding */}
-                <div className="group relative">
-                  <div className="bg-gradient-to-br from-violet-500/20 to-violet-600/20 rounded-2xl p-4 border border-violet-500/30 hover:border-violet-400 hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <div className="text-center">
-                      <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform duration-300">💻</span>
-                      <span className="text-sm font-medium text-white group-hover:text-violet-300 transition-colors duration-300">Coding</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

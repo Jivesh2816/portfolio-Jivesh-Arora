@@ -2,8 +2,11 @@
 import React from 'react';
 import IntroSection from './IntroSection';
 import Navbar from './Navbar';
+import ExperienceSection from './Experience';
 import AboutSection from './About';
+import SkillsSection from './skills';
 import ProjectsSection from './projects';
+import CertificationsSection from './Certifications';
 import ContactSection from './contacts';
 import './index.css';
 
@@ -13,7 +16,10 @@ function App() {
       <Navbar />
       <IntroSection />
       <AboutSection />
+      <SkillsSection />
+      <ExperienceSection />
       <ProjectsSection />
+      <CertificationsSection />
       <ContactSection />
     </div>
   );

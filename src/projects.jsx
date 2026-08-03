@@ -5,24 +5,34 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
+      title: "cold-start-recsys",
+      description: "A hybrid recommendation engine built on the Amazon Reviews 2023 dataset, combining PyTorch matrix factorization with Sentence-Transformers embeddings to handle cold-start users and items. Served via FastAPI, containerized with Docker, and deployed on AWS SageMaker.",
+      technologies: ["PyTorch", "Sentence-Transformers", "FastAPI", "Docker", "AWS SageMaker"],
+      image: "🧠",
+      demoLink: "",
+      sourceLink: "https://github.com/Jivesh2816/cold-start-recsys",
+      featured: true
+    },
+    {
+      id: 3,
       title: "Personal Portfolio Website",
       description: "A modern, responsive portfolio website built with React and Tailwind CSS. Features a clean design with smooth animations, interactive components, and a comprehensive showcase of my skills, education, and leadership experience.",
       technologies: ["React", "Tailwind CSS", "JavaScript", "Vite"],
       image: "🎨",
       demoLink: "https://jivesharora.netlify.app",
-      sourceLink: "https://github.com/Jivesh2816/portfolio-Jivesh-Arora.git"
+      sourceLink: "https://github.com/Jivesh2816/portfolio-Jivesh-Arora"
     },
     {
-      id: 2,
+      id: 4,
       title: "Lost and Found App",
       description: "A comprehensive lost and found application that helps users report and find lost items. Features user authentication, item categorization, location-based search, and a responsive interface for easy access across devices.",
       technologies: ["React", "Node.js", "MongoDB", "Express", "JavaScript"],
       image: "🔍",
       demoLink: "https://lost-and-found-app-seven.vercel.app/",
-      sourceLink: "https://github.com/Jivesh2816/Lost-and-found-app"
+      sourceLink: "https://github.com/Jivesh2816/Lost-and-found-app-new"
     },
     {
-      id: 3,
+      id: 5,
       title: "OCC Chatbot",
       description: "An intelligent chatbot application designed for OCC (Office of Career and Co-op) services. Provides automated responses to common queries, helps students with career guidance, and streamlines communication processes.",
       technologies: ["React", "JavaScript", "AI/ML", "Web APIs"],
@@ -48,9 +58,11 @@ export default function ProjectsSection() {
         
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-5xl mx-auto">
           {projects.map((project) => (
-            <div 
+            <div
               key={project.id}
-              className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border border-slate-700/50 hover:border-blue-500/50"
+              className={`bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border border-slate-700/50 ${
+                project.featured ? 'hover:border-green-400' : 'hover:border-blue-500/50'
+              }`}
             >
               <div className="p-8">
                 <div className="flex flex-col lg:flex-row gap-8">
@@ -60,9 +72,14 @@ export default function ProjectsSection() {
                       <span className="text-6xl">{project.image}</span>
                     </div>
                   </div>
-                  
+
                   {/* Project Content */}
                   <div className="flex-1">
+                    {project.featured && (
+                      <span className="inline-block mb-2 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-700 text-green-400 tracking-wide">
+                        Flagship Project
+                      </span>
+                    )}
                     <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
                     <p className="text-slate-300 mb-6 leading-relaxed">{project.description}</p>
                     
@@ -80,18 +97,22 @@ export default function ProjectsSection() {
                     
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-4">
-                      <button 
-                        onClick={() => window.open(project.demoLink, '_blank')}
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
-                        <span>🌐</span>
-                        View Live Demo
-                      </button>
-                      <button
-                        onClick={() => window.open(project.sourceLink, '_blank')}
-                        className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
-                        <span>📁</span>
-                        Source Code
-                      </button>
+                      {project.demoLink && (
+                        <button
+                          onClick={() => window.open(project.demoLink, '_blank')}
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
+                          <span>🌐</span>
+                          View Live Demo
+                        </button>
+                      )}
+                      {project.sourceLink && (
+                        <button
+                          onClick={() => window.open(project.sourceLink, '_blank')}
+                          className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
+                          <span>📁</span>
+                          Source Code
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

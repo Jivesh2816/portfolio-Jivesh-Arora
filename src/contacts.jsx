@@ -15,7 +15,7 @@ export default function ContactSection() {
 
   useEffect(() => {
     // Initialize EmailJS
-    emailjs.init("OwPUUepN-BhaQdEFh");
+    emailjs.init("31xSAwlaqxNahNWHO");
   }, []);
   
   const handleChange = (e) => {
@@ -42,8 +42,8 @@ export default function ContactSection() {
 
       // Send email using EmailJS
       const response = await emailjs.send(
-        'service_goqmcy4',
-        'template_20w0l3t',
+        'service_ne5c18l',
+        'template_jhg7pmb',
         templateParams
       );
 

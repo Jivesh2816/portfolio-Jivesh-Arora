@@ -31,12 +31,6 @@ body {
   background-color:  #000000; /* Ensures full background */
 }
 
-/* Keep your other styles but add !important to navbar styles */
-nav {
-  padding-left: 3rem !important;
-  padding-right: 3rem !important;
-}
-
 /* Add smooth scrolling */
 html {
   scroll-behavior: smooth;
