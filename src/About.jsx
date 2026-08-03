@@ -47,7 +47,7 @@ export default function AboutSection() {
                     <h3 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                       Jivesh Arora
                     </h3>
-                    <p className="text-xl text-blue-300 mb-4 font-medium">CS Student & Aspiring Developer</p>
+                    <p className="text-xl text-blue-300 mb-4 font-medium">CS Student · ML/AI Engineer in training</p>
 
                     {/* Status badges */}
                     <div className="flex flex-wrap gap-3 justify-center">
@@ -57,11 +57,11 @@ export default function AboutSection() {
                       </div>
                       <div className="flex items-center gap-2 bg-slate-800/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-600">
                         <span className="text-blue-400">🎓</span>
-                        <span className="text-blue-400 text-sm font-medium">University of Waterloo</span>
+                        <span className="text-blue-400 text-sm font-medium">University of Waterloo (2B, AI Specialization)</span>
                       </div>
                       <div className="flex items-center gap-2 bg-slate-800/80 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-600">
                         <span className="text-purple-400">💻</span>
-                        <span className="text-purple-400 text-sm font-medium">Full Stack Developer</span>
+                        <span className="text-purple-400 text-sm font-medium">Currently: Insight Analyst @ RBC, Digital Analytics</span>
                       </div>
                     </div>
                   </div>
@@ -81,26 +81,27 @@ export default function AboutSection() {
                     {/* Two-column split: story text + trait cards */}
                     <div className="grid grid-cols-1 sm:grid-cols-[1.4fr_1fr] gap-8 items-start">
                       <div>
-                        <p className="text-[14.5px] leading-[1.75] mb-3.5" style={{ color: '#b6c2d9' }}>
-                          I'm a Computer Science student at the University of Waterloo, driven by problem-solving, mathematics, and a habit of turning curiosity into working software.
-                        </p>
-                        <p className="text-[14.5px] leading-[1.75]" style={{ color: '#b6c2d9' }}>
-                          I care about clean code and continuous learning — and I'm looking for a co-op where I can put that to work on real problems.
+                        <p className="text-[16px] leading-[1.75] font-medium" style={{ color: '#b6c2d9' }}>
+                          CS + AI Specialization at Waterloo → RBC Insight Analyst co-op → building ML systems on the side, aiming for an ML engineering co-op next.
                         </p>
                       </div>
 
                       <div className="flex flex-col gap-3.5">
                         <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
                           <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Focus</div>
-                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Full-stack development &amp; data science</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">ML systems &amp; data engineering: recommender systems, PySpark pipelines, applied ML</div>
+                        </div>
+                        <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
+                          <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Building</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">cold-start-recsys: hybrid recommendation engine (PyTorch, Sentence-Transformers, AWS SageMaker)</div>
                         </div>
                         <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
                           <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Beyond Code</div>
-                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Mentoring peers, organizing tech &amp; cultural events</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Campus leadership, event organizing, peer mentoring</div>
                         </div>
                         <div className="rounded-xl p-3.5 px-4" style={{ background: '#101a30', border: '1px solid rgba(255,255,255,.07)' }}>
                           <div className="text-[11px] font-bold uppercase tracking-wide mb-1" style={{ color: '#67e8f9' }}>Right Now</div>
-                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">Open to co-op &amp; internship opportunities</div>
+                          <div className="text-[13.5px] font-medium leading-relaxed text-slate-200">On co-op at RBC · Researching manifold learning under Prof. Marina Meila (Fall 2026) · Targeting ML engineering co-op, Winter 2027</div>
                         </div>
                       </div>
                     </div>
