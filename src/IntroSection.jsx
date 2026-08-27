@@ -1,128 +1,161 @@
 // src/components/IntroSection.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap, prefersReducedMotion } from '@/lib/gsap';
+import { Button } from '@/components/ui/button';
+import TiltAvatar from '@/components/TiltAvatar';
 
 const SCATTERED_BADGES = [
-  { icon: 'devicon-python-plain', label: 'Python', style: { top: '8px', left: '6px' }, delay: '0s' },
-  { icon: 'devicon-pytorch-original', label: 'PyTorch', style: { top: '30px', right: 0 }, delay: '.6s' },
-  { icon: 'devicon-docker-plain', label: 'Docker', style: { top: '130px', left: '-18px' }, delay: '1.2s' },
-  { icon: 'devicon-amazonwebservices-plain', label: 'AWS', style: { bottom: '56px', right: '-14px' }, delay: '1.8s' },
-  { icon: 'devicon-fastapi-plain', label: 'FastAPI', style: { bottom: '6px', left: '24px' }, delay: '2.4s' },
-  { icon: 'devicon-git-plain', label: 'Git', style: { bottom: '-4px', right: '60px' }, delay: '3s' },
+  { icon: 'devicon-python-plain', label: 'Python', style: { top: '4px', left: '2px' } },
+  { icon: 'devicon-pytorch-original', label: 'PyTorch', style: { top: '26px', right: '-6px' } },
+  { icon: 'devicon-docker-plain', label: 'Docker', style: { top: '120px', left: '-24px' } },
+  { icon: 'devicon-amazonwebservices-plain', label: 'AWS', style: { bottom: '50px', right: '-20px' } },
+  { icon: 'devicon-fastapi-plain', label: 'FastAPI', style: { bottom: '2px', left: '18px' } },
+  { icon: 'devicon-git-plain', label: 'Git', style: { bottom: '-10px', right: '52px' } },
+];
+
+const ROLES = [
+  'Computer Science Student',
+  'Data Science Enthusiast',
+  'Driven by Curiosity',
+  'Tech Enthusiast',
+  'Aspiring Software Developer',
 ];
 
 export default function IntroSection() {
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-
-  const titles = [
-    "Computer Science Student",
-    "Data Science Enthusiast",
-    "Driven by Curiosity",
-    "Tech Enthusiast",
-    "Aspiring Software Developer"
-  ];
+  const [roleIndex, setRoleIndex] = useState(0);
+  const roleRef = useRef(null);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTitleIndex((prevIndex) =>
-        prevIndex === titles.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2000); // Change every 2 seconds
-
+      setRoleIndex((prev) => (prev === ROLES.length - 1 ? 0 : prev + 1));
+    }, 2600);
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (!roleRef.current || prefersReducedMotion) return;
+    gsap.fromTo(roleRef.current, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+  }, [roleIndex]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tl.fromTo('[data-hero="badge"]', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 })
+        .fromTo('[data-hero="name"]', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.3')
+        .fromTo('[data-hero="terminal"]', { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.4')
+        .fromTo('[data-hero="btns"] > *', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
+        .fromTo('[data-hero="stage"]', { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.8, ease: 'back.out(1.4)' }, '-=0.6')
+        .fromTo(
+          '[data-hero="fbadge"]',
+          { autoAlpha: 0, y: 12, scale: 0.6 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.07 },
+          '-=0.35'
+        );
+    }, heroRef);
+    return () => ctx.revert();
+  }, []);
+
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="hero-section min-h-screen flex items-center">
-      <div className="hero-body">
-        <div>
-          <h1 className="hero-name">Jivesh Arora</h1>
-          <div className="hero-tag">
-            <span className="inline-block min-w-[340px]">{titles[currentTitleIndex]}</span>
+    <section id="home" ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
+      <div className="absolute inset-0 bg-dot-grid opacity-[0.05] pointer-events-none" />
+      <div className="absolute inset-0 bg-scanlines opacity-[0.04] pointer-events-none" />
+
+      <div className="relative z-10 container mx-auto grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-14 px-6 py-16 items-center">
+        <div className="flex flex-col gap-6 max-w-2xl">
+          <div
+            data-hero="badge"
+            className="inline-flex items-center gap-2 w-fit rounded border border-primary/40 text-primary px-3 py-1.5 font-mono text-xs tracking-wide"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft" />
+            OPEN TO OPPORTUNITIES
           </div>
-          <p className="hero-desc">
-            Computer Science student at the University of Waterloo with a passion for developing efficient solutions and leveraging new technologies.
-          </p>
-          <div className="hero-btns">
-            <button
-              onClick={() => window.location.href = '/resume.pdf'}
-              className="btn-primary"
-            >
-              Download Resume
-            </button>
-            <button
-              onClick={scrollToContact}
-              className="btn-secondary"
-            >
-              Hire Me
-            </button>
+
+          <h1 data-hero="name" className="font-display font-bold text-6xl sm:text-7xl lg:text-8xl leading-[0.98] text-foreground">
+            Jivesh Arora
+          </h1>
+
+          <div data-hero="terminal" className="rounded-lg border border-border bg-card overflow-hidden w-full max-w-xl font-mono">
+            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+              <span className="w-2.5 h-2.5 rounded-full bg-primary/70" />
+              <span className="ml-2.5 text-xs text-muted-foreground">hero.sh</span>
+            </div>
+            <div className="px-5 py-5 text-sm leading-loose">
+              <div>
+                <span className="text-primary">$</span> whoami
+              </div>
+              <div className="text-foreground/80">
+                Computer Science student, University of Waterloo (AI specialization)
+              </div>
+              <div className="mt-2">
+                <span className="text-primary">$</span> echo $ROLE
+              </div>
+              <div className="text-foreground/80">
+                <span ref={roleRef} className="inline-block">
+                  {ROLES[roleIndex]}
+                </span>
+                <span className="inline-block w-[7px] h-[15px] bg-primary/80 ml-1 align-middle animate-blink" />
+              </div>
+            </div>
+          </div>
+
+          <div data-hero="btns" className="flex flex-wrap gap-3.5 mt-1">
+            <Button size="lg" onClick={() => (window.location.href = '/resume.pdf')}>
+              $ ./download-resume.sh
+            </Button>
+            <Button size="lg" variant="secondary" onClick={scrollToContact}>
+              $ ./contact-me.sh
+            </Button>
           </div>
         </div>
 
-        <div className="hero-right">
-          <div className="hero-glow" />
-
-          <div className="r8-stage">
-            <div className="avatar-ring">
-              <div className="avatar-inner">
+        <div className="flex flex-col items-center gap-6">
+          <TiltAvatar data-hero="stage" className="relative" style={{ width: 380, height: 380 }}>
+            <div className="relative w-[380px] h-[380px] flex items-center justify-center">
+              <div className="absolute w-[210px] h-[210px] rounded-full border border-primary" />
+              <div className="relative z-10 w-[190px] h-[190px] rounded-full bg-card overflow-hidden flex items-center justify-center">
+                <div
+                  className="absolute inset-0 opacity-40 bg-scanlines"
+                  style={{ backgroundSize: '100% 4px' }}
+                />
                 <img
                   src="/profile-photo.jpg"
                   alt="Jivesh Arora"
-                  className="w-full h-full object-cover rounded-full"
+                  className="relative w-full h-full object-cover rounded-full"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'flex';
                   }}
                 />
-                <div className="avatar-fallback" style={{ display: 'none' }}>JA</div>
+                <div className="hidden absolute inset-0 items-center justify-center font-mono font-bold text-4xl text-primary">
+                  JA
+                </div>
               </div>
-            </div>
 
-            {SCATTERED_BADGES.map(({ icon, label, style, delay }) => (
-              <div
-                key={icon}
-                className="r8a-badge"
-                style={{ ...style, animationDelay: delay }}
-              >
-                <i className={`${icon} colored`} />
-                {label}
-              </div>
-            ))}
+              {SCATTERED_BADGES.map(({ icon, label, style }) => (
+                <div key={icon} data-hero="fbadge" data-parallax className="absolute" style={style}>
+                  <div className="flex items-center gap-1.5 rounded border border-border bg-card px-3 py-2 text-[12px] font-mono font-medium text-foreground/85 shadow-xl animate-float">
+                    <i className={`${icon} colored text-base`} />
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TiltAvatar>
+
+          <div className="flex flex-col items-center gap-0.5 font-mono text-xs">
+            <span className="text-primary">● ONLINE</span>
+            <span className="text-muted-foreground">Waterloo, ON</span>
           </div>
         </div>
       </div>
-
-      <style>{`
-        #home.hero-section{width:100%;position:relative;overflow:hidden;padding-top:76px;box-sizing:border-box}
-        #home .hero-body{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:40px;align-items:center}
-        #home .hero-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:72px;color:#fff;margin:0}
-        #home .hero-tag{font-size:28px;color:#7a8aa8;margin:14px 0 22px;font-weight:400}
-        #home .hero-desc{font-size:19px;line-height:1.6;color:#cbd5e1;max-width:520px;margin-bottom:26px}
-        #home .hero-btns{display:flex;gap:14px}
-        #home .btn-primary{background:linear-gradient(90deg,#3b82f6,#2563eb);color:#fff;font-weight:700;font-size:14px;padding:13px 22px;border-radius:8px;border:none;cursor:pointer;transition:filter .2s ease,transform .2s ease}
-        #home .btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
-        #home .btn-secondary{background:linear-gradient(90deg,#22c55e,#0d9488);color:#fff;font-weight:700;font-size:14px;padding:13px 22px;border-radius:8px;border:none;cursor:pointer;transition:filter .2s ease,transform .2s ease}
-        #home .btn-secondary:hover{filter:brightness(1.1);transform:translateY(-1px)}
-        #home .hero-right{position:relative;height:400px;display:flex;align-items:center;justify-content:center;z-index:1}
-        #home .r8-stage{position:relative;width:380px;height:380px;display:flex;align-items:center;justify-content:center}
-        #home .avatar-ring{position:relative;z-index:2;width:220px;height:220px;border-radius:50%;padding:5px;background:linear-gradient(135deg,#8b9dff,#67e8f9,#22c55e)}
-        #home .avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#111c36;display:flex;align-items:center;justify-content:center;color:#8b9dff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px}
-        #home .avatar-fallback{width:100%;height:100%;border-radius:50%;align-items:center;justify-content:center}
-        #home .r8a-badge{position:absolute;display:flex;align-items:center;gap:7px;background:#101a30;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px 12px;font-size:12.5px;font-weight:600;color:#e2e8f0;box-shadow:0 8px 20px rgba(0,0,0,.35);animation:r8a-float 5s ease-in-out infinite}
-        #home .r8a-badge i{font-size:16px}
-        @keyframes r8a-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-        #home .hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:640px;height:640px;background:radial-gradient(circle,rgba(76,141,255,.16),transparent 65%);pointer-events:none;z-index:0}
-        @media (max-width: 900px){
-          #home .hero-body{grid-template-columns:1fr}
-          #home .hero-right{margin-top:20px}
-        }
-      `}</style>
     </section>
   );
 }

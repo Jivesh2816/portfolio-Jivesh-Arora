@@ -8,11 +8,14 @@ import SkillsSection from './skills';
 import ProjectsSection from './projects';
 import CertificationsSection from './Certifications';
 import ContactSection from './contacts';
+import ScrollProgress from '@/components/ScrollProgress';
+import { Toaster } from '@/components/ui/sonner';
 import './index.css';
 
 function App() {
   return (
-    <div className="font-sans bg-slate-900 text-white min-h-screen">
+    <div className="font-sans bg-background text-foreground min-h-screen">
+      <ScrollProgress />
       <Navbar />
       <IntroSection />
       <AboutSection />
@@ -21,6 +24,7 @@ function App() {
       <ProjectsSection />
       <CertificationsSection />
       <ContactSection />
+      <Toaster />
     </div>
   );
 }

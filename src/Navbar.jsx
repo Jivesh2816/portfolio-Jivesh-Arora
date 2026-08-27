@@ -1,17 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from '@/lib/gsap';
+import { cn } from '@/lib/utils';
 
 const LINKS = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'certifications', label: 'Certifications' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'home', label: 'home' },
+  { id: 'about', label: 'about' },
+  { id: 'skills', label: 'skills' },
+  { id: 'experience', label: 'experience' },
+  { id: 'projects', label: 'projects' },
+  { id: 'certifications', label: 'certs' },
+  { id: 'contact', label: 'contact' },
 ];
 
 export default function Navbar() {
   const [active, setActive] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const linkRefs = useRef({});
+  const underlineRef = useRef(null);
 
   useEffect(() => {
     const sections = LINKS.map((link) => document.getElementById(link.id)).filter(Boolean);
@@ -19,42 +24,71 @@ export default function Navbar() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
+          if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
       { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
-  return (
-    <nav id="site-header" className="hdr">
-      <div className="hdr-logo">Jivesh Arora</div>
+  useEffect(() => {
+    const el = linkRefs.current[active];
+    const underline = underlineRef.current;
+    if (!el || !underline) return;
+    gsap.to(underline, {
+      x: el.offsetLeft,
+      width: el.offsetWidth,
+      duration: 0.4,
+      ease: 'power3.out',
+    });
+  }, [active]);
 
-      <div className="hdr-pillnav">
+  return (
+    <nav
+      className={cn(
+        'fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 sm:px-8 font-mono transition-all duration-300',
+        scrolled ? 'h-14 bg-background/85 backdrop-blur-md border-b border-border' : 'h-16 bg-transparent border-b border-transparent'
+      )}
+    >
+      <div className="text-sm text-primary">
+        <span className="text-muted-foreground">~/</span>jivesh-arora
+      </div>
+
+      <div className="relative hidden sm:flex items-center gap-7">
+        <div
+          ref={underlineRef}
+          className="absolute -bottom-1 left-0 h-[2px] bg-primary"
+          style={{ width: 0 }}
+        />
         {LINKS.map((link) => (
           <a
             key={link.id}
+            ref={(el) => (linkRefs.current[link.id] = el)}
             href={`#${link.id}`}
-            className={`hdr-link${active === link.id ? ' active' : ''}`}
+            className={cn(
+              'relative pb-1 text-[13px] tracking-wide transition-colors',
+              active === link.id ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+            )}
           >
             {link.label}
           </a>
         ))}
       </div>
 
-      <style>{`
-        #site-header.hdr{position:fixed;top:0;left:0;width:100%;background:#0d1425;padding:0 32px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;height:76px;border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
-        #site-header .hdr-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;background:linear-gradient(90deg,#8b9dff,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
-        #site-header .hdr-pillnav{display:flex;align-items:center;gap:4px;background:#101a30;border:1px solid rgba(255,255,255,.07);border-radius:999px;padding:6px}
-        #site-header .hdr-link{font-family:'Inter',sans-serif;font-weight:600;font-size:15px;color:#94a3b8;text-decoration:none;transition:.15s;padding:8px 16px;border-radius:999px}
-        #site-header .hdr-link:hover{color:#e0e7ff}
-        #site-header .hdr-link.active{background:linear-gradient(90deg,#4c5fd6,#2563eb);color:#fff}
-      `}</style>
+      <a href="#contact" className="sm:hidden text-[13px] text-primary border border-primary/40 rounded px-3 py-1.5">
+        menu
+      </a>
     </nav>
   );
 }

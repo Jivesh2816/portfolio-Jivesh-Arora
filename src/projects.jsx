@@ -1,135 +1,116 @@
 // src/ProjectsSection.jsx
 import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import Reveal from '@/components/Reveal';
+import SectionHeading from '@/components/SectionHeading';
+
+const PROJECTS = [
+  {
+    id: 1,
+    title: 'cold-start-recsys',
+    description:
+      'A hybrid recommendation engine built on the Amazon Reviews 2023 dataset, combining PyTorch matrix factorization with Sentence-Transformers embeddings to handle cold-start users and items. Served via FastAPI, containerized with Docker, and deployed on AWS SageMaker.',
+    technologies: ['PyTorch', 'Sentence-Transformers', 'FastAPI', 'Docker', 'AWS SageMaker'],
+    image: '🧠',
+    demoLink: '',
+    sourceLink: 'https://github.com/Jivesh2816/cold-start-recsys',
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'Personal Portfolio Website',
+    description:
+      'A modern, responsive portfolio website built with React and Tailwind CSS. Features a clean design with smooth animations, interactive components, and a comprehensive showcase of my skills, education, and leadership experience.',
+    technologies: ['React', 'Tailwind CSS', 'JavaScript', 'Vite'],
+    image: '🎨',
+    demoLink: 'https://jivesharora.netlify.app',
+    sourceLink: 'https://github.com/Jivesh2816/portfolio-Jivesh-Arora',
+  },
+  {
+    id: 4,
+    title: 'Lost and Found App',
+    description:
+      'A comprehensive lost and found application that helps users report and find lost items. Features user authentication, item categorization, location-based search, and a responsive interface for easy access across devices.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript'],
+    image: '🔍',
+    demoLink: 'https://lost-and-found-app-seven.vercel.app/',
+    sourceLink: 'https://github.com/Jivesh2816/Lost-and-found-app-new',
+  },
+  {
+    id: 5,
+    title: 'OCC Chatbot',
+    description:
+      'An intelligent chatbot application designed for OCC (Office of Career and Co-op) services. Provides automated responses to common queries, helps students with career guidance, and streamlines communication processes.',
+    technologies: ['React', 'JavaScript', 'AI/ML', 'Web APIs'],
+    image: '🤖',
+    demoLink: 'https://occ-chatbot-36q6.vercel.app/',
+    sourceLink: 'https://github.com/Jivesh2816/OCC-CHATBOT',
+  },
+];
 
 export default function ProjectsSection() {
-  const projects = [
-    {
-      id: 1,
-      title: "cold-start-recsys",
-      description: "A hybrid recommendation engine built on the Amazon Reviews 2023 dataset, combining PyTorch matrix factorization with Sentence-Transformers embeddings to handle cold-start users and items. Served via FastAPI, containerized with Docker, and deployed on AWS SageMaker.",
-      technologies: ["PyTorch", "Sentence-Transformers", "FastAPI", "Docker", "AWS SageMaker"],
-      image: "🧠",
-      demoLink: "",
-      sourceLink: "https://github.com/Jivesh2816/cold-start-recsys",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Personal Portfolio Website",
-      description: "A modern, responsive portfolio website built with React and Tailwind CSS. Features a clean design with smooth animations, interactive components, and a comprehensive showcase of my skills, education, and leadership experience.",
-      technologies: ["React", "Tailwind CSS", "JavaScript", "Vite"],
-      image: "🎨",
-      demoLink: "https://jivesharora.netlify.app",
-      sourceLink: "https://github.com/Jivesh2816/portfolio-Jivesh-Arora"
-    },
-    {
-      id: 4,
-      title: "Lost and Found App",
-      description: "A comprehensive lost and found application that helps users report and find lost items. Features user authentication, item categorization, location-based search, and a responsive interface for easy access across devices.",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "JavaScript"],
-      image: "🔍",
-      demoLink: "https://lost-and-found-app-seven.vercel.app/",
-      sourceLink: "https://github.com/Jivesh2816/Lost-and-found-app-new"
-    },
-    {
-      id: 5,
-      title: "OCC Chatbot",
-      description: "An intelligent chatbot application designed for OCC (Office of Career and Co-op) services. Provides automated responses to common queries, helps students with career guidance, and streamlines communication processes.",
-      technologies: ["React", "JavaScript", "AI/ML", "Web APIs"],
-      image: "🤖",
-      demoLink: "https://occ-chatbot-36q6.vercel.app/",
-      sourceLink: "https://github.com/Jivesh2816/OCC-CHATBOT"
-    }
-  ];
-
   return (
-    <section 
-      id="projects" 
-      className="py-20 bg-slate-900"
-    >
-      <div className="container mx-auto px-6 max-w-5xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">My Projects</h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto mb-4"></div>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-            Here are the projects I've built to showcase my skills and learning journey.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-5xl mx-auto">
-          {projects.map((project) => (
-            <div
+    <section id="projects" className="py-20 sm:py-24 bg-background">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <SectionHeading
+          command="ls ./projects"
+          title="My Projects"
+          subtitle="Here are the projects I've built to showcase my skills and learning journey."
+        />
+
+        <Reveal className="grid grid-cols-1 lg:grid-cols-2 gap-8" y={30} stagger={0.12}>
+          {PROJECTS.map((project) => (
+            <Card
               key={project.id}
-              className={`bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border border-slate-700/50 ${
-                project.featured ? 'hover:border-green-400' : 'hover:border-blue-500/50'
+              className={`overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col ${
+                project.featured ? 'hover:border-primary/60 lg:col-span-2' : 'hover:border-primary/40'
               }`}
             >
-              <div className="p-8">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Project Image/Icon */}
-                  <div className="flex-shrink-0">
-                    <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center border border-slate-600">
-                      <span className="text-6xl">{project.image}</span>
-                    </div>
-                  </div>
-
-                  {/* Project Content */}
-                  <div className="flex-1">
-                    {project.featured && (
-                      <span className="inline-block mb-2 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-700 text-green-400 tracking-wide">
-                        Flagship Project
-                      </span>
-                    )}
-                    <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
-                    <p className="text-slate-300 mb-6 leading-relaxed">{project.description}</p>
-                    
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.map((tech, index) => (
-                        <span 
-                          key={index}
-                          className="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-4">
-                      {project.demoLink && (
-                        <button
-                          onClick={() => window.open(project.demoLink, '_blank')}
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
-                          <span>🌐</span>
-                          View Live Demo
-                        </button>
-                      )}
-                      {project.sourceLink && (
-                        <button
-                          onClick={() => window.open(project.sourceLink, '_blank')}
-                          className="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center gap-2">
-                          <span>📁</span>
-                          Source Code
-                        </button>
-                      )}
-                    </div>
+              <CardContent className="p-8 flex flex-col sm:flex-row gap-6 flex-1">
+                <div className="flex-shrink-0">
+                  <div className="w-20 h-20 sm:w-28 sm:h-28 bg-muted rounded-lg flex items-center justify-center border border-border">
+                    <span className="text-5xl sm:text-6xl">{project.image}</span>
                   </div>
                 </div>
-              </div>
-            </div>
+
+                <div className="flex-1 flex flex-col">
+                  {project.featured && <Badge variant="accent" className="mb-2 w-fit">flagship</Badge>}
+                  <h3 className="text-2xl font-display font-bold mb-3 text-foreground">{project.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed flex-1">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
+                      <Badge key={tech}>{tech}</Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-3">
+                    {project.demoLink && (
+                      <Button onClick={() => window.open(project.demoLink, '_blank')}>$ view-demo</Button>
+                    )}
+                    {project.sourceLink && (
+                      <Button variant="outline" onClick={() => window.open(project.sourceLink, '_blank')}>
+                        $ view-source
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           ))}
-        </div>
-        
-        {/* Coming Soon Message */}
-        <div className="text-center mt-12">
-          <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold text-blue-400 mb-2">More Projects Coming Soon!</h3>
-            <p className="text-slate-400">
-              I'm actively working on new projects including full-stack applications, mobile apps, and AI/ML projects. Check back soon for updates!
+        </Reveal>
+
+        <Reveal className="text-center mt-12" y={20}>
+          <Card className="p-6 max-w-2xl mx-auto bg-muted/40">
+            <h3 className="text-xl font-display font-semibold text-primary mb-2">More Projects Coming Soon!</h3>
+            <p className="text-muted-foreground">
+              I'm actively working on new projects including full-stack applications, mobile apps, and AI/ML
+              projects. Check back soon for updates!
             </p>
-          </div>
-        </div>
+          </Card>
+        </Reveal>
       </div>
     </section>
   );
