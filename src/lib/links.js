@@ -1,6 +1,5 @@
 export const RESUMES = [
-  { id: 'software', label: 'Software Resume', command: '$ resume --software', href: '/Jivesh-Arora-Software-Resume.pdf' },
-  { id: 'data-ml', label: 'Data / ML Resume', command: '$ resume --data-ml', href: '/Jivesh-Arora-Data-ML-Resume.pdf' },
+  { id: 'resume', label: 'Resume', command: '$ ./resume.sh', href: '/resume.pdf' },
 ];
 
 export const SOCIALS = {

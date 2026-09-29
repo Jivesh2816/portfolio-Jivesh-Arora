@@ -6,7 +6,7 @@ Personal portfolio for Jivesh Arora, a University of Waterloo Computer Science s
 
 ## Sections
 
-1. **Hero**: positioning statement, highlight chips (research, RBC, Wanderers, ML), Software and Data/ML resume downloads, GitHub/LinkedIn
+1. **Hero**: positioning statement, highlight chips (research, RBC, Wanderers, ML), resume download, GitHub/LinkedIn
 2. **About**: short bio and current focus
 3. **Research**: CRA UR2PhD undergraduate research (dimensionality reduction)
 4. **Experience**: RBC Digital Analytics, WUSA Off-Campus Don, leadership
@@ -42,9 +42,7 @@ npm run lint       # ESLint
 
 ```
 ├── public/
-│   ├── Jivesh-Arora-Software-Resume.pdf
-│   ├── Jivesh-Arora-Data-ML-Resume.pdf
-│   ├── _redirects          # Netlify: /resume.pdf → Software resume
+│   ├── resume.pdf
 │   ├── favicon.svg
 │   └── profile-photo.jpg
 ├── src/
@@ -59,13 +57,13 @@ npm run lint       # ESLint
 │   ├── Certifications.jsx  # Education & Certifications
 │   ├── contacts.jsx
 │   ├── components/         # Reveal, SectionHeading, TiltAvatar, shadcn/ui
-│   └── lib/                # gsap setup, links (resumes/socials), utils
+│   └── lib/                # gsap setup, links (resume/socials), utils
 └── vite.config.js
 ```
 
-## Updating resumes
+## Updating the resume
 
-Replace the PDFs in `public/` (keep the filenames), or update the paths in `src/lib/links.js`.
+Replace `public/resume.pdf` (keep the filename).
 
 ## Deployment
 
