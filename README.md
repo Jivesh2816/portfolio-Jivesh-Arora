@@ -1,90 +1,72 @@
 # Jivesh Arora's Portfolio
 
-A modern, responsive portfolio website showcasing projects, skills, and experience. Built with **React**, **Vite**, and **Tailwind CSS**.
+Personal portfolio for Jivesh Arora, a University of Waterloo Computer Science student building full-stack products, data systems, and ML applications. Built with **React**, **Vite**, **Tailwind CSS**, shadcn/ui components, and GSAP animations.
 
 **Live**: [jivesharora.netlify.app](https://jivesharora.netlify.app/)
 
-## Features
+## Sections
 
-- **Pill Navbar** — floating capsule nav with scroll-spy active-state highlighting
-- **Hero Section** — rotating title, scattered floating tech badges (Python, PyTorch, Docker, AWS, FastAPI, Git) around a profile avatar
-- **About Me** — two-column bio with trait cards (Focus / Building / Beyond Code / Right Now) and a bento-grid Interests & Hobbies layout
-- **Skills** — radial tree diagram (Languages / Frameworks & AI / Tools & Cloud) with per-branch hover highlighting
-- **Experience** — work history timeline
-- **Projects** — real, verified GitHub source links and live demo links
-- **Certifications** — AWS certification cards
-- **Contact Form** — EmailJS-powered, delivers directly to inbox
-- **Responsive Design** — mobile-first with Tailwind CSS
+1. **Hero**: positioning statement, highlight chips (research, RBC, Wanderers, ML), Software and Data/ML resume downloads, GitHub/LinkedIn
+2. **About**: short bio and current focus
+3. **Research**: CRA UR2PhD undergraduate research (dimensionality reduction)
+4. **Experience**: RBC Digital Analytics, WUSA Off-Campus Don, leadership
+5. **Projects**: Wanderers, Cold-Start Recommendation System, OCC Community Assistant (with expandable engineering notes), plus Lost & Found
+6. **Skills**: Languages / Web & Mobile / Data / AI & ML / Cloud & Tools
+7. **Education & Certifications**: University of Waterloo, AWS certifications
+8. **Contact**: EmailJS-powered contact form
+
+The navbar has scroll-spy highlighting on desktop and a collapsible menu on mobile.
 
 ## Tech Stack
 
-- React 19
-- Vite 7
-- Tailwind CSS 3
-- EmailJS (`emailjs-com`)
+- React 19, Vite 7
+- Tailwind CSS 3 + shadcn/ui (Radix primitives)
+- GSAP (scroll reveals, hero timeline, tilt avatar)
+- EmailJS (`emailjs-com`), Sonner toasts
 - Devicon (tech icon font)
-- Google Fonts — Space Grotesk & Inter
-- ESLint
+- Google Fonts: Space Grotesk, Inter, JetBrains Mono
 
 ## Getting Started
-
-### Installation
 
 1. Clone: `git clone https://github.com/Jivesh2816/portfolio-Jivesh-Arora.git`
 2. Install: `npm install`
 3. Run: `npm run dev` → http://localhost:5173
 
-### Build
-
 ```bash
 npm run build      # Production build
 npm run preview    # Preview production build
+npm run lint       # ESLint
 ```
 
 ## Project Structure
 
 ```
+├── public/
+│   ├── Jivesh-Arora-Software-Resume.pdf
+│   ├── Jivesh-Arora-Data-ML-Resume.pdf
+│   ├── _redirects          # Netlify: /resume.pdf → Software resume
+│   ├── favicon.svg
+│   └── profile-photo.jpg
 ├── src/
+│   ├── App.jsx             # Section order
 │   ├── Navbar.jsx
-│   ├── IntroSection.jsx
+│   ├── IntroSection.jsx    # Hero
 │   ├── About.jsx
-│   ├── skills.jsx
+│   ├── Research.jsx
 │   ├── Experience.jsx
 │   ├── projects.jsx
-│   ├── Certifications.jsx
+│   ├── skills.jsx
+│   ├── Certifications.jsx  # Education & Certifications
 │   ├── contacts.jsx
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
+│   ├── components/         # Reveal, SectionHeading, TiltAvatar, shadcn/ui
+│   └── lib/                # gsap setup, links (resumes/socials), utils
 └── vite.config.js
 ```
 
-## Sections
+## Updating resumes
 
-- **Navbar** — pill nav with scroll-spy
-- **Home** — hero with rotating title and floating tech badges
-- **About** — bio, trait cards, education, interests bento grid
-- **Skills** — radial tree of Languages / Frameworks & AI / Tools & Cloud
-- **Experience** — work history
-- **Projects** — showcase with verified GitHub links
-- **Certifications** — AWS certifications
-- **Contact** — EmailJS contact form
+Replace the PDFs in `public/` (keep the filenames), or update the paths in `src/lib/links.js`.
 
 ## Deployment
 
-Deployed on **Netlify**: [jivesharora.netlify.app](https://jivesharora.netlify.app/)
-
-To deploy your own copy:
-- **Netlify**: connect the repo, or upload the `dist` folder after `npm run build`
-- **Vercel**: `vercel`
-
-## Performance
-
-- Vite HMR for fast development
-- Tree-shaking for optimized builds
-- Minimal Tailwind CSS bundle
-
----
-
-**Portfolio of**: Jivesh Arora
-**Live Demo**: [jivesharora.netlify.app](https://jivesharora.netlify.app/)
+Deployed on **Netlify**: connect the repo, or upload the `dist` folder after `npm run build`.

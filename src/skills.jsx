@@ -9,20 +9,32 @@ const BRANCHES = [
   {
     label: 'languages',
     color: '#4ade80',
-    x: 163,
-    skills: ['JavaScript', 'Python', 'Java', 'SQL', 'Racket'],
+    x: 98,
+    skills: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'C', 'C++', 'R'],
   },
   {
-    label: 'frameworks_&_ai',
+    label: 'web_&_mobile',
     color: '#34d399',
-    x: 490,
-    skills: ['React', 'Next.js', 'Tailwind CSS', 'FastAPI', 'PyTorch', 'LangChain'],
+    x: 294,
+    skills: ['React', 'Next.js', 'React Native (Expo)', 'Node.js', 'Express', 'FastAPI', 'REST', 'Tailwind'],
   },
   {
-    label: 'tools_&_cloud',
+    label: 'data',
     color: '#2dd4bf',
-    x: 816,
-    skills: ['Git', 'Docker', 'AWS', 'Tableau', 'MongoDB'],
+    x: 490,
+    skills: ['PySpark', 'Hive', 'Airflow', 'Tableau', 'PostgreSQL / Supabase', 'SQLite', 'MongoDB', 'Data Modelling'],
+  },
+  {
+    label: 'ai_/_ml',
+    color: '#22d3ee',
+    x: 686,
+    skills: ['PyTorch', 'Sentence-Transformers', 'scikit-learn', 'LLM Agents', 'Function Calling', 'RAG', 'BM25'],
+  },
+  {
+    label: 'cloud_&_tools',
+    color: '#a3e635',
+    x: 882,
+    skills: ['AWS / SageMaker', 'Docker', 'Git', 'Linux'],
   },
 ];
 
@@ -33,8 +45,9 @@ export default function SkillsSection() {
     if (prefersReducedMotion || !svgRef.current) return;
     const paths = svgRef.current.querySelectorAll('path');
     const ctx = gsap.context(() => {
-      paths.forEach((path) => {
-        const length = path.getTotalLength();
+      paths.forEach((path, i) => {
+        // Straight lines from (490,0); computed directly since the SVG is display:none below lg.
+        const length = Math.hypot(BRANCHES[i].x - 490, 60);
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
         gsap.to(path, {
           strokeDashoffset: 0,
@@ -50,18 +63,19 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-20 sm:py-24 bg-background">
       <div className="container mx-auto px-6 max-w-5xl">
-        <SectionHeading command="ls ./skills" title="Skills" subtitle="The languages, frameworks, and tools I build with." />
+        <SectionHeading command="ls ./skills" title="Skills" subtitle="What I build with, from product code to data pipelines to models." />
 
         <div className="mx-auto relative" style={{ width: 980, maxWidth: '100%' }}>
           <div className="w-[220px] mx-auto rounded border border-primary/40 bg-card text-center relative z-[2] py-3.5 px-2.5">
             <div className="font-mono font-bold text-[13px] tracking-wide text-primary">$ tree ./skills</div>
           </div>
 
+          {/* Branch lines only line up with the single-row desktop layout. */}
           <svg
             ref={svgRef}
             width="100%"
             height="60"
-            className="block mx-auto"
+            className="hidden lg:block mx-auto"
             viewBox="0 0 980 60"
             preserveAspectRatio="none"
           >
@@ -76,9 +90,9 @@ export default function SkillsSection() {
             ))}
           </svg>
 
-          <Reveal className="flex justify-between mt-[60px] gap-5 flex-wrap" y={24} stagger={0.15}>
+          <Reveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 mt-8 lg:mt-0 gap-8 lg:gap-4" y={24} stagger={0.12}>
             {BRANCHES.map((branch) => (
-              <div key={branch.label} className="flex-1 min-w-[220px] flex flex-col items-center gap-3">
+              <div key={branch.label} className="min-w-0 flex flex-col items-center gap-3">
                 <div
                   className="px-4 py-2.5 rounded font-mono text-xs font-bold tracking-wide text-background transition-transform hover:scale-105"
                   style={{ background: branch.color }}
@@ -89,7 +103,7 @@ export default function SkillsSection() {
                   {branch.skills.map((skill) => (
                     <Badge
                       key={skill}
-                      className="bg-card text-foreground/80 tracking-wide font-medium text-xs px-3.5 py-2 transition-all hover:-translate-y-0.5 hover:text-white normal-case"
+                      className="bg-card text-foreground/80 tracking-wide font-medium text-xs px-3 py-1.5 whitespace-nowrap transition-all hover:-translate-y-0.5 hover:text-white normal-case"
                       style={{ borderColor: `${branch.color}66` }}
                     >
                       {skill}

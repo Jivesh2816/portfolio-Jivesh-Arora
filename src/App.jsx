@@ -2,11 +2,12 @@
 import React from 'react';
 import IntroSection from './IntroSection';
 import Navbar from './Navbar';
-import ExperienceSection from './Experience';
 import AboutSection from './About';
-import SkillsSection from './skills';
+import ResearchSection from './Research';
+import ExperienceSection from './Experience';
 import ProjectsSection from './projects';
-import CertificationsSection from './Certifications';
+import SkillsSection from './skills';
+import EducationSection from './Certifications';
 import ContactSection from './contacts';
 import ScrollProgress from '@/components/ScrollProgress';
 import { Toaster } from '@/components/ui/sonner';
@@ -17,13 +18,16 @@ function App() {
     <div className="font-sans bg-background text-foreground min-h-screen">
       <ScrollProgress />
       <Navbar />
-      <IntroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <CertificationsSection />
-      <ContactSection />
+      <main>
+        <IntroSection />
+        <AboutSection />
+        <ResearchSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <EducationSection />
+        <ContactSection />
+      </main>
       <Toaster />
     </div>
   );
